@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjfd6s6548f76"]
+
+[ext_resource type="Script" path="res://score1.gd" id="1_uka06"]
+[ext_resource type="Script" path="res://score2.gd" id="2_urk6i"]
+
+[node name="Node" type="Node"]
+metadata/_edit_horizontal_guides_ = [60.0, 134.0]
+metadata/_edit_vertical_guides_ = [569.0]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 171.0
+offset_top = 60.0
+offset_right = 317.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0.917647, 0, 0, 1)
+script = ExtResource("1_uka06")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 751.0
+offset_top = 59.0
+offset_right = 907.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0.909804, 0, 0, 1)
+script = ExtResource("2_urk6i")
+
+[node name="button" type="Button" parent="."]
+offset_left = 465.0
+offset_top = 288.0
+offset_right = 680.0
+offset_bottom = 393.0
+theme_override_font_sizes/font_size = 34
+text = "Start"

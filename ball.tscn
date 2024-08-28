@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm0ump5a7ar5a"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_84050"]
+[ext_resource type="Texture2D" uid="uid://cd7u0ht86uwlv" path="res://image/ball.png" id="2_oitt8"]
+[ext_resource type="AudioStream" uid="uid://bl7u5g1e7hvam" path="res://wav/dead.mp3" id="3_23u6n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3ry4"]
+radius = 19.0
+
+[node name="ball" type="Area2D"]
+position = Vector2(567, 310)
+script = ExtResource("1_84050")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d3ry4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oitt8")
+
+[node name="dead" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("3_23u6n")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

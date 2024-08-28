@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://bebskgr1q0704"]
+
+[ext_resource type="Texture2D" uid="uid://ub2o4b8b1de6" path="res://image/separator.png" id="1_73ph8"]
+[ext_resource type="Script" path="res://map.gd" id="1_m5asd"]
+[ext_resource type="Script" path="res://wall_1.gd" id="2_nh4l0"]
+[ext_resource type="PackedScene" uid="uid://bm0ump5a7ar5a" path="res://ball.tscn" id="3_t7rv6"]
+[ext_resource type="PackedScene" uid="uid://bjfd6s6548f76" path="res://scores.tscn" id="4_gjcoc"]
+[ext_resource type="PackedScene" uid="uid://dqorydiej28te" path="res://player_1.tscn" id="5_lombr"]
+[ext_resource type="Script" path="res://player_2.gd" id="6_rpb7i"]
+[ext_resource type="AudioStream" uid="uid://dj2nsyl67w8w1" path="res://wav/Intense.mp3" id="8_3u76c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkbg3"]
+size = Vector2(17, 679)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvehw"]
+size = Vector2(1168, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sse6"]
+size = Vector2(1175, 20)
+
+[node name="map" type="Node2D"]
+position = Vector2(5, 5)
+script = ExtResource("1_m5asd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 1152.0
+offset_bottom = 658.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(571, 330)
+texture = ExtResource("1_73ph8")
+metadata/_edit_group_ = true
+
+[node name="wall1" type="Area2D" parent="."]
+position = Vector2(-4, 1.5)
+script = ExtResource("2_nh4l0")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall1"]
+position = Vector2(-7, 321)
+shape = SubResource("RectangleShape2D_nkbg3")
+
+[node name="wall2" type="Area2D" parent="."]
+position = Vector2(1156, 7.5)
+script = ExtResource("2_nh4l0")
+y = -5
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+position = Vector2(-12, 319)
+shape = SubResource("RectangleShape2D_nkbg3")
+
+[node name="wall3" type="Area2D" parent="."]
+position = Vector2(570, -3)
+script = ExtResource("2_nh4l0")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
+shape = SubResource("RectangleShape2D_bvehw")
+
+[node name="wall4" type="Area2D" parent="."]
+position = Vector2(1156, 7.5)
+script = ExtResource("2_nh4l0")
+y = -5
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
+position = Vector2(-583.5, 643)
+shape = SubResource("RectangleShape2D_5sse6")
+
+[node name="ball" parent="." instance=ExtResource("3_t7rv6")]
+position = Vector2(569, 330)
+
+[node name="scores" parent="." instance=ExtResource("4_gjcoc")]
+process_mode = 3
+
+[node name="player1" parent="." instance=ExtResource("5_lombr")]
+
+[node name="player2" parent="." instance=ExtResource("5_lombr")]
+position = Vector2(1082, 305)
+script = ExtResource("6_rpb7i")
+
+[node name="backAudeo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_3u76c")
+
+[connection signal="area_entered" from="wall1" to="wall1" method="_on_area_entered"]

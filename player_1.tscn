@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqorydiej28te"]
+
+[ext_resource type="Texture2D" uid="uid://dvlsxxtaca5hr" path="res://image/player1.png" id="1_div3h"]
+[ext_resource type="Script" path="res://player_1.gd" id="1_saeej"]
+[ext_resource type="AudioStream" uid="uid://tqxenekeq3e5" path="res://wav/best_snare.wav" id="3_3txdp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdmv8"]
+size = Vector2(19, 86)
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(62, 311)
+script = ExtResource("1_saeej")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.434783, 0.140354)
+texture = ExtResource("1_div3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_kdmv8")
+
+[node name="best" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3txdp")
